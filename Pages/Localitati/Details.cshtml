@@ -1,0 +1,31 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Localitati.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Localitate</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Localitate.Denumire)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Localitate.Denumire)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Localitate.Judet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Localitate.Judet.Denumire)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Localitate.ID">Modifica</a> |
+    <a asp-page="./Index">Back</a>
+</div>

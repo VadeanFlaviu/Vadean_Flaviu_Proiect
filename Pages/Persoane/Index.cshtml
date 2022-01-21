@@ -1,0 +1,97 @@
+﻿@page "/"
+@model Vadean_Flaviu_Proiect.Pages.Persoane.IndexModel
+
+@{
+    ViewData["Title"] = "Lista Votanti";
+}
+
+<h1>Lista Votanti</h1>
+
+<p>
+    <a asp-page="Create">Adauga Votant</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Cauta persoana(CNP sau Nume):
+            <input type="text" name="SearchName" value="@Model.CurrentFilter" />
+            <input type="submit" value="Cauta" class="btn btn-primary" /> |
+            <a asp-page="./Index">Reseteaza</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Persoane[0].CNP)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NumeSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Persoane[0].NumePersoana)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persoane[0].Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persoane[0].SectieVotareID)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DenumireSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Persoane[0].SectieVotare.Localitate.Denumire)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Persoane)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumePersoana)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SectieVotare.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SectieVotare.Localitate.Denumire)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Modifica</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.Persoane.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Persoane.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Persoane.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Persoane.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

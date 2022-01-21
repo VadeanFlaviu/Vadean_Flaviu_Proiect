@@ -1,0 +1,25 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Judete.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Judet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Judete.Denumire)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Judete.Denumire)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Judete.ID">Modifica</a> |
+    <a asp-page="./Index">Back</a>
+</div>

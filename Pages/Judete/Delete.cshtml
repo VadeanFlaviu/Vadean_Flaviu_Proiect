@@ -1,0 +1,28 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Judete.DeleteModel
+
+@{
+    ViewData["Title"] = "Sterge Judet";
+}
+
+<h1>Delete</h1>
+
+<h3>Doriti sa stergeti acest judet?</h3>
+<div>
+    <h4>Judet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Judete.Denumire)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Judete.Denumire)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Judete.ID" />
+        <input type="submit" value="Sterge" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back</a>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Persoane.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Persoana</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.CNP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.CNP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.NumePersoana)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.NumePersoana)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.SectieVotare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.SectieVotare.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Persoana.ID">Modifica</a> |
+    <a asp-page="./Index">Back</a>
+</div>

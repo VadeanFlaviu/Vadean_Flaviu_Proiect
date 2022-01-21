@@ -1,0 +1,37 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.SectiiVotare.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Sectie Votare</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SectieVotare.ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SectieVotare.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SectieVotare.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SectieVotare.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SectieVotare.Localitate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SectieVotare.Localitate.Denumire)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SectieVotare.ID">Modifica</a> |
+    <a asp-page="./Index">Back</a>
+</div>

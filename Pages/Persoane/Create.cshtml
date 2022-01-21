@@ -1,0 +1,48 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Persoane.CreateModel
+
+@{
+    ViewData["Title"] = "Adauga Persoana";
+}
+
+<h1>Adauga Persoana</h1>
+
+<h4>Persoana</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Persoana.CNP" class="control-label"></label>
+                <input asp-for="Persoana.CNP" class="form-control" />
+                <span asp-validation-for="Persoana.CNP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Persoana.NumePersoana" class="control-label"></label>
+                <input asp-for="Persoana.NumePersoana" class="form-control" />
+                <span asp-validation-for="Persoana.NumePersoana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Persoana.Adresa" class="control-label"></label>
+                <input asp-for="Persoana.Adresa" class="form-control" />
+                <span asp-validation-for="Persoana.Adresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Persoana.SectieVotareID" class="control-label"></label>
+                <select asp-for="Persoana.SectieVotareID" class ="form-control" asp-items="ViewBag.SectieVotareID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adauga" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

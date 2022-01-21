@@ -1,0 +1,40 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.SectiiVotare.EditModel
+
+@{
+    ViewData["Title"] = "Modifica";
+}
+
+<h1>Modifica</h1>
+
+<h4>Sectie Votare</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SectieVotare.ID" />
+            <div class="form-group">
+                <label asp-for="SectieVotare.Adresa" class="control-label"></label>
+                <input asp-for="SectieVotare.Adresa" class="form-control" />
+                <span asp-validation-for="SectieVotare.Adresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SectieVotare.LocalitateID" class="control-label"></label>
+                <select asp-for="SectieVotare.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID"></select>
+                <span asp-validation-for="SectieVotare.LocalitateID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Modifica" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

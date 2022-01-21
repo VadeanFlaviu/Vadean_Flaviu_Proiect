@@ -1,0 +1,75 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.SectiiVotare.IndexModel
+
+@{
+    ViewData["Title"] = "Lista Sectii Votare";
+}
+
+<h1>Lista Sectii Votare</h1>
+
+<p>
+    <a asp-page="Create">Adauga Sectie Votare</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Cauta adresa:
+            <input type="text" name="SearchName" value="@Model.CurrentFilter" />
+            <input type="submit" value="Cauta" class="btn btn-primary" /> |
+            <a asp-page="./Index">Reseteaza</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SectieVotare[0].Adresa)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DenumireSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.SectieVotare[0].Localitate.Denumire)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SectieVotare)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localitate.Denumire)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Modifica</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.SectieVotare.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.SectieVotare.HasNextPage ? "disabled" : "";
+}
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.SectieVotare.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.SectieVotare.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

@@ -1,0 +1,46 @@
+﻿@page
+@model Vadean_Flaviu_Proiect.Pages.Persoane.DeleteModel
+
+@{
+    ViewData["Title"] = "Sterge";
+}
+
+<h1>Sterge</h1>
+
+<h3>Doriti sa stergeti aceasta persoana?</h3>
+<div>
+    <h4>Persoana</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.CNP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.CNP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.NumePersoana)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.NumePersoana)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persoana.SectieVotare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persoana.SectieVotare.ID)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Persoana.ID" />
+        <input type="submit" value="Sterge" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back</a>
+    </form>
+</div>
